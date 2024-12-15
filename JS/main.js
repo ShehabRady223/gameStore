@@ -1,8 +1,8 @@
 const showGames = document.getElementById('games')
 const links = document.querySelectorAll('.nav-link')
-const cards = document.querySelectorAll('.card')
+const all = document.querySelector('.all')
 const details = document.querySelector('.details')
-console.log(cards);
+const btn = document.querySelector('.btn-close')
 
 async function getData(category = 'mmorpg') {
     const options = {
@@ -29,7 +29,7 @@ async function display(games) {
     for (let i = 0; i < games.length; i++) {
         container += `
                         <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" date-id='${games[i].id}'>
                         <img class="card-img-top" src="${games[i].thumbnail}" alt="Title" />
                         <div class="card-body">
                             <h4 class="card-title d-flex justify-content-between">
@@ -48,12 +48,18 @@ async function display(games) {
         `
     }
     showGames.innerHTML = container
+    const cards = document.querySelectorAll('.card')
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('click', (e) => {
+            all.classList.add('d-none')
+            details.classList.remove('d-none')
+        })
+    }
 }
 
-for (let i = 0; i < cards.length; i++) {
-    cards[i].addEventListener('click',()=>{
-        console.log('hi');
-    })
-}
+btn.addEventListener('click', () => {
+    all.classList.remove('d-none')
+    details.classList.add('d-none')
+})
 
 getData();
