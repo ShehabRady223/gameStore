@@ -6,14 +6,44 @@
 
 body {
     font-family: "Comfortaa", cursive;
-    /* min-height: 100%;
-    min-width: 100%; */
     background-color: #272b30;
     color: #fff;
 }
 
+.loader {
+    display: inline-block;
+    position: fixed;
+    z-index: 4;
+    height: 100vh;
+    width: 100%;
+    background-color:rgb(39, 43, 48 , 0.8) ;
+    color: #fff;
+    font-family: Consolas, Menlo, Monaco, monospace;
+    font-weight: bold;
+    font-size: 100px;
+    /* opacity: 0.8; */
+}
+
+.loader:before {
+    content: "{";
+    display: inline-block;
+    animation: pulse 0.4s alternate infinite ease-in-out;
+}
+
+.loader:after {
+    content: "}";
+    display: inline-block;
+    animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+}
+
 header img {
-    /* max-height: 30vh; */
     height: 30vh;
     object-fit: cover;
 }
@@ -32,7 +62,7 @@ header img {
 }
 
 .card {
-    height: 500px;
+    height: 450px;
     background-color: #272b30;
     color: #fff;
     cursor: pointer;
